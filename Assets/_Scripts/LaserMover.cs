@@ -5,6 +5,7 @@ using UnityEngine;
 public class LaserMover : MonoBehaviour
 {
     // Variable Declarations
+    public GameObject gameObject;
     public float speed;
 
     private Rigidbody2D rBody;
@@ -14,5 +15,10 @@ public class LaserMover : MonoBehaviour
     {
         rBody = GetComponent<Rigidbody2D>();
         rBody.velocity = transform.right * speed;
+    }
+
+    void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }

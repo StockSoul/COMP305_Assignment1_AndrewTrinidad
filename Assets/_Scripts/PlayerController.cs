@@ -2,14 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Boundary
-{
-    // Properties ( Variables )
-    public float xMin, xMax, yMin, yMax;
-    // Behaviours ( Function / Methods)
-}
-
 public class PlayerController : MonoBehaviour {
 
     // Variable Declaration
@@ -35,7 +27,7 @@ public class PlayerController : MonoBehaviour {
     void Update() {
         myTime += Time.deltaTime;
 
-        if (Input.GetButton("Fire1") && myTime > fireRate)
+        if (Input.GetKeyDown("space") && myTime > fireRate)
         {
             Instantiate(laser, laserSpawn.transform.position, laserSpawn.transform.rotation);
             myTime = 0.0f;  

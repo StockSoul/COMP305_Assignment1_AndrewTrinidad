@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2f7053d656f394a972b6d883a296ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   boundary:
     xMin: -4.63
     xMax: 4.63
@@ -134,7 +134,7 @@ MonoBehaviour:
     yMax: 1
   laser: {fileID: 73492276273405008, guid: 356291da62f3f814ea3b47ba61467415, type: 3}
   laserSpawn: {fileID: 505855357736524247}
-  fireRate: 0.5
+  fireRate: 0.3
 --- !u!50 &505855358109506470
 Rigidbody2D:
   serializedVersion: 4
