@@ -7,8 +7,9 @@ public class PlayerController : MonoBehaviour {
     // Variable Declaration
     [Header("Movement Settings")]
     public float speed = 5.0f;
-    // public float xMin, xMax, yMin, yMax;
     public Boundary boundary;
+
+    public GameController gameController;
 
     [Header("Attack Settings")]
     public GameObject laser;
@@ -52,5 +53,19 @@ public class PlayerController : MonoBehaviour {
         rBody.position = new Vector2(
             Mathf.Clamp(rBody.position.x, boundary.xMin, boundary.xMax),  // Restrict the x position to xMin and xMax
             Mathf.Clamp(rBody.position.y, boundary.yMin, boundary.yMax)); // Restrict the y position to yMin and yMax
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        switch (other.gameObject.tag)
+        {
+            case "Enemy":
+                gameController.Lives -= 1;
+                break;
+            case "Coin":
+                gameController.Score += 10;
+                break;
+        }
+
     }
 }

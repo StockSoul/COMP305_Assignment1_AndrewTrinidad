@@ -378,7 +378,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &912613289
 MonoBehaviour:
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 2120499899}
   - component: {fileID: 2120499898}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -430,6 +430,11 @@ MonoBehaviour:
   startWait: 2
   spawnWait: 0.5
   waveWait: 3
+  Diamond: {fileID: 4191177082743731292, guid: 4139f4acfdd885f47bef224741911dea, type: 3}
+  diamondSpawn: {x: 4.63, y: 7}
+  diamondCount: 2
+  _lives: 0
+  _score: 0
 --- !u!4 &2120499899
 Transform:
   m_ObjectHideFlags: 0
@@ -494,7 +499,7 @@ PrefabInstance:
     - target: {fileID: 505855358109506468, guid: ba96cbeffcb781c4497072c95f9f5c31,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 505855358109506468, guid: ba96cbeffcb781c4497072c95f9f5c31,
         type: 3}
