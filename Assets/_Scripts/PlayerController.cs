@@ -62,10 +62,10 @@ public class PlayerController : MonoBehaviour {
             case "Enemy":
                 gameController.Lives -= 1;
                 break;
-            case "Coin":
+            case "Diamond":
                 gameController.Score += 10;
                 break;
-        }
+        }   
 
     }
 }

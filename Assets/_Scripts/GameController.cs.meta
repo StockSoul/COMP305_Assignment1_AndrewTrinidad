@@ -3,7 +3,17 @@ guid: 52c67fc013dfa3c408152c574b465546
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Enemy: {instanceID: 0}
+  - Diamond: {instanceID: 0}
+  - livesLabel: {instanceID: 0}
+  - scoreLabel: {instanceID: 0}
+  - highScoreLabel: {instanceID: 0}
+  - highScore: {instanceID: 0}
+  - startLabel: {instanceID: 0}
+  - startButton: {instanceID: 0}
+  - endLabel: {instanceID: 0}
+  - restartButton: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

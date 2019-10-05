@@ -70,7 +70,7 @@ public class EnemyController : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            return;
+            Destroy(gameObject);
         }
 
         if (other.tag == "Lazer")
