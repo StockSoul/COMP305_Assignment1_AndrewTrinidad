@@ -2,28 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Diamond Controller
+//Andrew Trinidad
+//Last Modified: Oct 5, 2019
+//Program Description: This controller allows the
+//Diamond to move down the screen.
 public class DiamondController : MonoBehaviour
 {
-   
     public float verticalSpeed;
-    //public float resetPosition;
-    //public float resetPoint;
 
     // Start is called before the first frame update
     void Start()
     {
-        //Reset();
     }
 
     // Update is called once per frame
     void Update()
     {
         Move();
-        //CheckBounds();
     }
 
     /// <summary>
-    /// This method moves the ocean down the screen by verticalSpeed
+    /// Moves Diamond down by verticalSpeed
     /// </summary>
     void Move()
     {
@@ -35,30 +35,16 @@ public class DiamondController : MonoBehaviour
     }
 
     /// <summary>
-    /// This method resets the ocean to the resetPosition
+    /// If Diamond goes offscreen destroy it
     /// </summary>
-    //void Reset()
-    //{
-    //    transform.position = new Vector2(0.0f, resetPosition);
-    //}
-    //
-    /// <summary>
-    /// This method checks if the ocean reaches the lower boundary
-    /// and then it Resets it
-    /// </summary>
-    //void CheckBounds()
-    //{
-    //    if (transform.position.y <= resetPoint)
-    //    {
-    //        Reset();
-    //    }
-    //}
-
     void OnBecameInvisible()
     {
         Destroy(gameObject);
     }
 
+    /// <summary>
+    /// If Diamond collides with the player destroy it.
+    /// </summary>
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.tag == "Player")

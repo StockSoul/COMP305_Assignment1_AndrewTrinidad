@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//BackgroundController
+//Andrew Trinidad
+//Last Modified: Oct 5, 2019
+//Program Description: This controller allows the
+//background to scroll down towards the reset point
+//and resetting it to the reset position
+
 public class BackgroundController : MonoBehaviour
 {
     public float verticalSpeed;
@@ -11,7 +18,6 @@ public class BackgroundController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Reset();
     }
 
     // Update is called once per frame
@@ -22,7 +28,7 @@ public class BackgroundController : MonoBehaviour
     }
 
     /// <summary>
-    /// This method moves the ocean down the screen by verticalSpeed
+    /// Moves Background down by verticalSpeed
     /// </summary>
     void Move()
     {
@@ -34,7 +40,7 @@ public class BackgroundController : MonoBehaviour
     }
 
     /// <summary>
-    /// This method resets the ocean to the resetPosition
+    /// Resets Background to the resetPosition
     /// </summary>
     void Reset()
     {
@@ -42,7 +48,7 @@ public class BackgroundController : MonoBehaviour
     }
 
     /// <summary>
-    /// This method checks if the ocean reaches the lower boundary
+    /// Checks if Background reaches the lower boundary
     /// and then it Resets it
     /// </summary>
     void CheckBounds()

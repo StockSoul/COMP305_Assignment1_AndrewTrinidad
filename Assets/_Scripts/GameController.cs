@@ -4,8 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+//GameController
+//Andrew Trinidad
+//Last Modified: Oct 5, 2019
+//Program Description: This controller controls the main logic of the game.
+//From the waves, UI elements, Scene Management, etc
+
 public class GameController : MonoBehaviour
 {
+    //Enemy wave settings
     [Header("Wave Settings")]
     public GameObject Enemy;
     public Vector2 spawn;
@@ -14,11 +21,19 @@ public class GameController : MonoBehaviour
     public float spawnWait;
     public float waveWait;
 
+    //Sound Files
+    [Header("Audio Sources")]
+    public SoundClip activeSoundClip;
+    public AudioSource[] audioSources;
+
+    //Diamond settings 
+    //(Diamonds borrow some variables from Enemy save settings)
     [Header("Diamond Settings")]
     public GameObject Diamond;
     public Vector2 diamondSpawn;
     public int diamondCount;
 
+    //Scoreboard variables
     [Header("Scoreboard")]
     [SerializeField]
     private int _lives;
@@ -38,6 +53,7 @@ public class GameController : MonoBehaviour
     public GameObject endLabel;
     public GameObject restartButton;
 
+    //public properties
     public int Lives
     {
         get
@@ -85,10 +101,11 @@ public class GameController : MonoBehaviour
     {
         GameObjectInitialization();
         SceneConfiguration();
+        //Keeps highScore in the scene to later be found by other scenes.
         DontDestroyOnLoad(highScore);
     }
 
-
+    //Initialize various variables by finding GameObjects.
     private void GameObjectInitialization()
     {
         highScore = GameObject.Find("HighScore");
@@ -99,6 +116,9 @@ public class GameController : MonoBehaviour
         restartButton = GameObject.Find("RestartButton");
     }
 
+    //This method allows the game to switch scenes from start, main, and end.
+    //Also this method starts spawning waves of enemiess and Diamonds.
+    //It also sets audio settings.
     private void SceneConfiguration()
     {
         switch (SceneManager.GetActiveScene().name)
@@ -109,6 +129,7 @@ public class GameController : MonoBehaviour
                 highScoreLabel.enabled = false;
                 endLabel.SetActive(false);
                 restartButton.SetActive(false);
+                activeSoundClip = SoundClip.NONE;
                 break;
             case "Main":
                 highScoreLabel.enabled = false;
@@ -116,12 +137,14 @@ public class GameController : MonoBehaviour
                 startButton.SetActive(false);
                 endLabel.SetActive(false);
                 restartButton.SetActive(false);
+                activeSoundClip = SoundClip.MUSIC;
                 break;
             case "End":
                 scoreLabel.enabled = false;
                 livesLabel.enabled = false;
                 startLabel.SetActive(false);
                 startButton.SetActive(false);
+                activeSoundClip = SoundClip.NONE;
                 highScoreLabel.text = "High Score: " + highScore.GetComponent<HighScore>().score;
                 break;
         }
@@ -132,26 +155,36 @@ public class GameController : MonoBehaviour
         StartCoroutine(SpawnWaves());
         StartCoroutine(SpawnDiamonds());
 
+        if ((activeSoundClip != SoundClip.NONE) && (activeSoundClip != SoundClip.NUM_OF_CLIPS))
+        {
+            AudioSource activeAudioSource = audioSources[(int)activeSoundClip];
+            activeAudioSource.playOnAwake = true;
+            activeAudioSource.loop = true;
+            activeAudioSource.volume = 0.5f;
+            activeAudioSource.Play();
+        }
     }
 
 
     // Update is called once per frame
     void Update()
     {
-
     }
 
+    //When the start button is clicked load the main scene.
     public void OnStartButtonClick()
     {
-        //DontDestroyOnLoad(highScore);
         SceneManager.LoadScene("Main");
     }
 
+    //When the restart button is clicked load the main scene.
     public void OnRestartButtonClick()
     {
         SceneManager.LoadScene("Main");
     }
 
+    //This method is what spawns the enemy waves at a fixed y position 
+    //and a random x position within parameters
     IEnumerator SpawnWaves()
     {
         yield return new WaitForSeconds(startWait);
@@ -168,6 +201,7 @@ public class GameController : MonoBehaviour
         }
     }
 
+    //This method spawns diamonds. An exact clone of the spawn waves method.
     IEnumerator SpawnDiamonds()
     {
         yield return new WaitForSeconds(startWait);

@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Util;
 
+//EnemyController
+//Andrew Trinidad
+//Last Modified: Oct 5, 2019
+//Program Description: This controller allows the
+//enemy to move down the screen and towards the player.
+
 public class EnemyController : MonoBehaviour
 {
     [Header("Speed Values")]
@@ -56,16 +62,8 @@ public class EnemyController : MonoBehaviour
     }
 
     /// <summary>
-    //Enemy has reached the bottom of the screen and forces it to the top.
+    /// If collides with either the player or a Lazer destroy the Enemy
     /// </summary>
-    //void CheckBounds()
-    //{
-    //    if (transform.position.y <= boundary.yMin)
-    //    {
-    //        Reset();
-    //    }
-    //}
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Player")
@@ -79,6 +77,9 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// If Enemy goes offscreen destroy it
+    /// </summary>
     void OnBecameInvisible()
     {
         Destroy(gameObject);

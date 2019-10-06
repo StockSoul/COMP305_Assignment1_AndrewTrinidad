@@ -99,8 +99,8 @@ MonoBehaviour:
     min: -0.02
     max: 0.02
   verticalSpeedRange:
-    min: 0.08
-    max: 0.1
+    min: 0.09
+    max: 0.11
   verticalSpeed: 0
   horizontalSpeed: 0
   boundary:
